@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Environmental Quality Dashboard</title>
+
+
+<style>
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',Arial,sans-serif;
+}
+
+
+
+body{
+
+    min-height:100vh;
+
+    padding:25px;
+
+    background:
+    linear-gradient(
+        to bottom,
+        #050505 0%,
+        #555555 35%,
+        #dcdcdc 70%,
+        #ffffff 100%
+    );
+
+}
+
+
+
+/* HEADER */
+
+
+.header{
+
+    text-align:center;
+
+    padding:15px;
+
+    margin-bottom:10px;
+
+
+    background:
+
+    rgba(255,255,255,0.35);
+
+
+    border-radius:25px;
+
+
+    backdrop-filter:blur(12px);
+
+
+    box-shadow:
+
+    0 10px 25px rgba(0,0,0,0.25);
+
+}
+
+
+
+.header h1{
+
+    font-size:34px;
+
+    color:#12344d;
+
+    text-shadow:
+    0 3px 10px rgba(0,0,0,0.2);
+
+}
+
+
+
+.header p{
+
+    margin-top:10px;
+
+    color:#444;
+
+    font-size:15px;
+
+}
+
+
+
+
+
+/* CARD CONTAINER */
+
+
+.dashboard{
+
+
+    display:flex;
+
+    gap:12px;
+
+    overflow-x:auto;
+
+    padding:3px;
+
+
+}
+
+
+
+/* CARD */
+
+
+.card{
+
+
+    min-width:150px;
+
+    height:140px;
+
+
+    border-radius:20px;
+
+
+    padding:15px;
+
+
+    color:white;
+
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+
+    position:relative;
+
+
+    overflow:hidden;
+
+
+
+    box-shadow:
+
+
+    0 20px 35px rgba(0,0,0,0.35),
+
+
+    inset 0 2px 10px rgba(255,255,255,0.4);
+
+
+
+    transition:0.3s;
+
+
+}
+
+
+
+.card:hover{
+
+
+    transform:
+    translateY(-10px)
+    scale(1.03);
+
+
+}
+
+
+
+
+.card::before{
+
+
+    content:"";
+
+
+    position:absolute;
+
+
+    width:140px;
+
+    height:140px;
+
+
+    border-radius:50%;
+
+
+    background:
+    rgba(255,255,255,0.25);
+
+
+    top:-50px;
+
+    right:-40px;
+
+
+}
+
+
+
+
+
+.icon{
+
+    font-size:30px;
+
+    margin-bottom:10px;
+
+}
+
+
+
+.title{
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+
+
+.value{
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    margin-top:8px;
+
+}
+
+
+
+.sub{
+
+    font-size:13px;
+
+    margin-top:8px;
+
+    text-align:center;
+
+}
+
+
+
+
+/* CARD COLOURS */
+
+
+.temperature{
+
+background:
+linear-gradient(135deg,#ff9966,#ff5e62);
+
+box-shadow:
+0 0 25px rgba(255,94,98,0.6);
+
+}
+
+
+
+.humidity{
+
+background:
+linear-gradient(135deg,#36d1dc,#5b86e5);
+
+box-shadow:
+0 0 25px rgba(54,209,220,0.6);
+
+}
+
+
+
+.pressure{
+
+background:
+linear-gradient(135deg,#667eea,#764ba2);
+
+box-shadow:
+0 0 25px rgba(118,75,162,0.6);
+
+}
+
+
+
+.wind{
+
+background:
+linear-gradient(135deg,#56ccf2,#2f80ed);
+
+box-shadow:
+0 0 25px rgba(47,128,237,0.6);
+
+}
+
+
+
+.weather{
+
+background:
+linear-gradient(135deg,#89f7fe,#66a6ff);
+
+box-shadow:
+0 0 25px rgba(102,166,255,0.6);
+
+}
+
+
+
+.visibility{
+
+background:
+linear-gradient(135deg,#f6d365,#fda085);
+
+box-shadow:
+0 0 25px rgba(253,160,133,0.6);
+
+}
+
+
+
+.sun{
+
+background:
+linear-gradient(135deg,#f7971e,#ffd200);
+
+box-shadow:
+0 0 25px rgba(255,210,0,0.6);
+
+}
+
+
+
+.time{
+
+background:
+linear-gradient(135deg,#11998e,#38ef7d);
+
+box-shadow:
+0 0 25px rgba(56,239,125,0.6);
+
+}
+
+
+
+.location{
+
+background:
+linear-gradient(135deg,#232526,#414345);
+
+box-shadow:
+0 0 25px rgba(0,0,0,0.7);
+
+}
+
+
+
+
+
+</style>
+
+
+</head>
+
+
+
+<body>
+
+<div class="dashboard">
+
+<!-- Date & Time -->
+
+<div class="card time">
+
+<div class="icon">🕒</div>
+
+<div class="title">
+Date & Time
+</div>
+
+<div class="sub">
+
+<div id="date">
+--
+</div>
+
+<br>
+
+<div id="time">
+--
+</div>
+
+</div>
+
+</div>
+
+
+
+
+<!-- Temperature -->
+
+<div class="card temperature">
+
+<div class="icon">🌡</div>
+
+<div class="title">
+Temperature
+</div>
+
+<div class="value" id="temperature">
+--
+</div>
+
+<div class="sub">
+
+Feels Like:
+
+<span id="feels">
+--
+</span>
+
+</div>
+
+</div>
+
+
+
+
+<!-- Humidity -->
+
+<div class="card humidity">
+
+<div class="icon">💧</div>
+
+<div class="title">
+Humidity
+</div>
+
+<div class="value" id="humidity">
+--
+</div>
+
+</div>
+
+
+
+
+<!-- Pressure -->
+
+<div class="card pressure">
+
+<div class="icon">🌍</div>
+
+<div class="title">
+Pressure
+</div>
+
+<div class="value" id="pressure">
+--
+</div>
+
+</div>
+
+
+
+
+<!-- Wind -->
+
+<div class="card wind">
+
+<div class="icon">💨</div>
+
+<div class="title">
+Wind
+</div>
+
+<div class="value" id="wind">
+--
+</div>
+
+<div class="sub">
+
+Direction:
+
+<span id="direction">
+--
+</span>
+
+</div>
+
+</div>
+
+
+
+
+<!-- Weather -->
+
+<div class="card weather">
+
+<div class="icon">☁</div>
+
+<div class="title">
+Weather
+</div>
+
+<div class="value" id="weather">
+--
+</div>
+
+<div class="sub">
+
+Cloud Cover:
+
+<span id="clouds">
+--
+</span>
+
+</div>
+
+</div>
+
+
+
+
+<!-- Visibility -->
+
+<div class="card visibility">
+
+<div class="icon">👁</div>
+
+<div class="title">
+Visibility
+</div>
+
+<div class="value" id="visibility">
+--
+</div>
+
+</div>
+
+
+
+
+<!-- Sun -->
+
+<div class="card sun">
+
+<div class="icon">🌅</div>
+
+<div class="title">
+Sun Information
+</div>
+
+<div class="sub" id="sun">
+--
+</div>
+
+</div>
+
+<script>
+
+
+// ================================
+// OpenWeather API
+// ================================
+
+
+const apiKey = "149494206f597de7d528e4ab70b0eefb";
+
+
+const city = "Moratuwa,LK";
+
+
+const url =
+`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+
+
+
+
+fetch(url)
+
+
+.then(response => response.json())
+
+
+.then(data => {
+
+
+
+document.getElementById("temperature").innerHTML =
+
+Math.round(data.main.temp) + " °C";
+
+
+
+
+document.getElementById("feels").innerHTML =
+
+Math.round(data.main.feels_like) + " °C";
+
+
+
+
+
+document.getElementById("humidity").innerHTML =
+
+data.main.humidity + " %";
+
+
+
+
+
+document.getElementById("pressure").innerHTML =
+
+data.main.pressure + " hPa";
+
+
+
+
+
+document.getElementById("wind").innerHTML =
+
+data.wind.speed + " m/s";
+
+
+
+
+
+document.getElementById("direction").innerHTML =
+
+data.wind.deg + "°";
+
+
+
+
+
+document.getElementById("weather").innerHTML =
+
+data.weather[0].main;
+
+
+
+
+
+document.getElementById("clouds").innerHTML =
+
+data.clouds.all + " %";
+
+
+
+
+
+document.getElementById("visibility").innerHTML =
+
+(data.visibility / 1000) + " km";
+
+
+
+
+
+let sunrise =
+
+new Date(data.sys.sunrise * 1000)
+.toLocaleTimeString();
+
+
+
+let sunset =
+
+new Date(data.sys.sunset * 1000)
+.toLocaleTimeString();
+
+
+
+
+
+document.getElementById("sun").innerHTML =
+
+"Sunrise: " + sunrise +
+
+"<br>" +
+
+"Sunset: " + sunset;
+
+
+
+})
+
+
+
+.catch(error => {
+
+
+console.log(error);
+
+
+document.getElementById("weather").innerHTML =
+
+"Error";
+
+
+});
+
+
+
+
+
+
+// ================================
+// Live Date and Time
+// ================================
+
+
+function updateTime(){
+
+
+let now = new Date();
+
+
+
+document.getElementById("date").innerHTML =
+
+now.toLocaleDateString();
+
+
+
+document.getElementById("time").innerHTML =
+
+now.toLocaleTimeString();
+
+
+
+}
+
+
+updateTime();
+
+
+setInterval(updateTime,1000);
+
+
+
+</script>
+
+
+
+</body>
+
+
+</html>
