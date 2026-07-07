@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Map Gallery</title>
+
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+
+body{
+
+    background:
+    linear-gradient(
+    180deg,
+    #020617,
+    #111827,
+    #374151
+    );
+
+    color:white;
+    min-height:100vh;
+
+}
+
+
+.header h1{
+
+    font-size:48px;
+    color:white;
+
+    text-shadow:
+    0 0 20px rgba(56,189,248,0.8);
+
+}
+
+
+
+/* Gallery container */
+
+.gallery{
+
+    width:90%;
+    margin:auto;
+
+}
+
+
+
+/* Each map card */
+
+.map-card{
+
+    display:flex;
+
+    margin-bottom:35px;
+
+    background:
+    rgba(15,23,42,0.85);
+
+    border-radius:20px;
+
+    padding:20px;
+
+    box-shadow:
+    0 0 25px rgba(56,189,248,0.25);
+
+}
+
+
+
+/* Image side */
+
+.map-image{
+
+    width:70%;
+
+    display:flex;
+    align-items:center;
+
+}
+
+
+.map-image img{
+
+    width:100%;
+
+    aspect-ratio:297 / 210;
+
+    object-fit:contain;
+
+    background:white;
+
+    border-radius:15px;
+
+
+    box-shadow:
+
+    0 0 25px
+    rgba(56,189,248,0.55);
+
+}
+
+
+
+/* Description side */
+
+.description{
+
+    width:30%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:30px;
+
+}
+
+
+
+.number{
+
+    font-size:18px;
+
+    color:#38BDF8;
+
+}
+
+
+.description h2{
+
+    margin:15px 0;
+
+    color:#38BDF8;
+
+    font-size:24px;
+
+}
+
+
+.description p{
+
+    color:#E5E7EB;
+
+    line-height:1.6;
+
+    font-size:16px;
+
+}
+
+
+
+/* Mobile */
+
+@media(max-width:900px){
+
+.map-card{
+
+    flex-direction:column;
+
+}
+
+.map-image,
+.description{
+
+    width:100%;
+
+}
+
+}
+
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+
+
+
+<div class="gallery">
+
+
+
+<div class="map-card">
+
+<div class="map-image">
+
+<img src="https://i.pinimg.com/736x/b2/fd/9a/b2fd9a49296b6024bf0d579a02365f58.jpg">
+
+</div>
+
+
+<div class="description">
+
+<div class="number">
+01
+</div>
+
+<h2>
+Figure Ground Map
+</h2>
+
+<p>
+Shows the spatial relationship between built-up and open spaces, highlighting the urban form and development pattern of the study area.
+</p>
+
+</div>
+
+</div>
+
+
+
+
+
+<div class="map-card">
+
+<div class="map-image">
+
+<img src="https://i.pinimg.com/736x/68/65/f1/6865f1e6dbcfb14303a7139da091f40c.jpg">
+
+</div>
+
+
+<div class="description">
+
+<div class="number">
+02
+</div>
+
+<h2>
+Road Network
+</h2>
+
+<p>
+Represents the existing road hierarchy and connectivity pattern, supporting the understanding of accessibility and movement structure.
+</p>
+
+</div>
+
+</div>
+
+
+
+
+
+<div class="map-card">
+
+<div class="map-image">
+
+<img src="https://i.pinimg.com/736x/12/6a/89/126a89377fd03116a994ef6c82540283.jpg">
+
+</div>
+
+
+<div class="description">
+
+<div class="number">
+03
+</div>
+
+<h2>
+Field Visit Points
+</h2>
+
+<p>
+Displays locations collected during field observations, representing surveyed points and identified spatial characteristics.
+</p>
+
+</div>
+
+</div>
+
+
+
+
+
+
+<div class="map-card">
+
+<div class="map-image">
+
+<img src="https://i.pinimg.com/736x/d3/01/8a/d3018aba936fd54ab6094848e8694073.jpg">
+
+</div>
+
+
+<div class="description">
+
+<div class="number">
+04
+</div>
+
+<h2>
+Building Density per Grid
+</h2>
+
+<p>
+Illustrates the distribution of building concentration across grid cells to identify variations in urban density.
+</p>
+
+</div>
+
+</div>
+
+
+
+
+
+
+<div class="map-card">
+
+<div class="map-image">
+
+<img src="https://i.pinimg.com/736x/99/1d/93/991d93ca2a0e1d3c805f0c6040110727.jpg">
+
+</div>
+
+
+<div class="description">
+
+<div class="number">
+05
+</div>
+
+<h2>
+Floor Density per Grid
+</h2>
+
+<p>
+Shows the intensity of built development by considering total floor area within each grid.
+</p>
+
+</div>
+
+</div>
+
+
+
+
+
+
+<div class="map-card">
+
+<div class="map-image">
+
+<img src="https://i.pinimg.com/736x/9c/fe/74/9cfe744d5c34e0012791e06ba6454fad.jpg">
+
+</div>
+
+
+<div class="description">
+
+<div class="number">
+06
+</div>
+
+<h2>
+Network Accessibility Pattern (400m)
+</h2>
+
+<p>
+Represents local-scale accessibility within a 400m radius, indicating areas with better pedestrian-level connectivity.
+</p>
+
+</div>
+
+</div>
+
+
+
+
+
+
+<div class="map-card">
+
+<div class="map-image">
+
+<img src="https://i.pinimg.com/736x/a7/62/7a/a7627a113ad5fbfcbdc00215cbf461ca.jpg">
+
+</div>
+
+
+<div class="description">
+
+<div class="number">
+07
+</div>
+
+<h2>
+Network Accessibility Pattern (800m)
+</h2>
+
+<p>
+Represents wider accessibility patterns within an 800m radius, showing broader movement potential.
+</p>
+
+</div>
+
+</div>
+
+
+
+
+
+
+<div class="map-card">
+
+<div class="map-image">
+
+<img src="https://i.pinimg.com/736x/09/38/6b/09386ba70928bbd5d3174a68ac7f3f37.jpg">
+
+</div>
+
+
+<div class="description">
+
+<div class="number">
+08
+</div>
+
+<h2>
+Movement Flow Intensity (400m)
+</h2>
+
+<p>
+Highlights local movement intensity and identifies streets with higher potential pedestrian activity.
+</p>
+
+</div>
+
+</div>
+
+
+
+
+
+
+<div class="map-card">
+
+<div class="map-image">
+
+<img src="https://i.pinimg.com/736x/b4/21/e6/b421e63e561d3f218b8c1e6b9480ee19.jpg">
+
+</div>
+
+
+<div class="description">
+
+<div class="number">
+09
+</div>
+
+<h2>
+Movement Flow Intensity (800m)
+</h2>
+
+<p>
+Shows larger-scale movement patterns and the relationship between network structure and urban activity.
+</p>
+
+</div>
+
+</div>
+
+
+
+</div>
+
+
+</body>
+
+</html>
