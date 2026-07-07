@@ -6,65 +6,230 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Moratuwa Environmental Conditions</title>
+<title>Environmental Quality Dashboard</title>
+
 
 <style>
+
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, sans-serif;
+    font-family:'Segoe UI',Arial,sans-serif;
 }
+
+
 
 body{
 
-    background:#eef3f8;
-    padding:20px;
+    min-height:100vh;
+
+    padding:25px;
+
+    background:
+    linear-gradient(
+        to bottom,
+        #050505 0%,
+        #555555 35%,
+        #dcdcdc 70%,
+        #ffffff 100%
+    );
 
 }
 
 
-h2{
+
+/* HEADER */
+
+
+.header{
 
     text-align:center;
-    color:#2c3e50;
-    margin-bottom:25px;
+
+    padding:15px;
+
+    margin-bottom:10px;
+
+
+    background:
+
+    rgba(255,255,255,0.35);
+
+
+    border-radius:25px;
+
+
+    backdrop-filter:blur(12px);
+
+
+    box-shadow:
+
+    0 10px 25px rgba(0,0,0,0.25);
 
 }
 
 
 
-.container{
+.header h1{
+
+    font-size:34px;
+
+    color:#12344d;
+
+    text-shadow:
+    0 3px 10px rgba(0,0,0,0.2);
+
+}
+
+
+
+.header p{
+
+    margin-top:10px;
+
+    color:#444;
+
+    font-size:15px;
+
+}
+
+
+
+
+
+/* CARD CONTAINER */
+
+
+.dashboard{
+
 
     display:flex;
-    justify-content:center;
-    gap:15px;
-    flex-wrap:wrap;
+
+    gap:12px;
+
+    overflow-x:auto;
+
+    padding:3px;
+
 
 }
 
+
+
+/* CARD */
 
 
 .card{
 
-    background:white;
-    width:220px;
-    min-height:150px;
-    padding:20px;
-    border-radius:12px;
-    text-align:center;
-    box-shadow:0 3px 10px rgba(0,0,0,0.15);
+
+    min-width:170px;
+
+    height:150px;
+
+
+    border-radius:20px;
+
+
+    padding:15px;
+
+
+    color:white;
+
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+
+    position:relative;
+
+
+    overflow:hidden;
+
+
+
+    box-shadow:
+
+
+    0 20px 35px rgba(0,0,0,0.35),
+
+
+    inset 0 2px 10px rgba(255,255,255,0.4);
+
+
+
+    transition:0.3s;
+
 
 }
 
 
 
-.card h3{
+.card:hover{
 
-    color:#555;
-    font-size:17px;
-    margin-bottom:15px;
+
+    transform:
+    translateY(-10px)
+    scale(1.03);
+
+
+}
+
+
+
+
+.card::before{
+
+
+    content:"";
+
+
+    position:absolute;
+
+
+    width:140px;
+
+    height:140px;
+
+
+    border-radius:50%;
+
+
+    background:
+    rgba(255,255,255,0.25);
+
+
+    top:-50px;
+
+    right:-40px;
+
+
+}
+
+
+
+
+
+.icon{
+
+    font-size:30px;
+
+    margin-bottom:10px;
+
+}
+
+
+
+.title{
+
+    font-size:14px;
+
+    font-weight:600;
 
 }
 
@@ -72,72 +237,177 @@ h2{
 
 .value{
 
-    font-size:24px;
+    font-size:22px;
+
     font-weight:bold;
-    color:#0078D4;
+
+    margin-top:8px;
 
 }
 
 
 
-.details{
+.sub{
 
-    font-size:15px;
-    line-height:1.7;
-    color:#333;
+    font-size:13px;
 
-}
-
-
-
-.footer{
+    margin-top:8px;
 
     text-align:center;
-    margin-top:25px;
-    color:#666;
-    font-size:14px;
 
 }
+
+
+
+
+/* CARD COLOURS */
+
+
+.temperature{
+
+background:
+linear-gradient(135deg,#ff9966,#ff5e62);
+
+box-shadow:
+0 0 25px rgba(255,94,98,0.6);
+
+}
+
+
+
+.humidity{
+
+background:
+linear-gradient(135deg,#36d1dc,#5b86e5);
+
+box-shadow:
+0 0 25px rgba(54,209,220,0.6);
+
+}
+
+
+
+.pressure{
+
+background:
+linear-gradient(135deg,#667eea,#764ba2);
+
+box-shadow:
+0 0 25px rgba(118,75,162,0.6);
+
+}
+
+
+
+.wind{
+
+background:
+linear-gradient(135deg,#56ccf2,#2f80ed);
+
+box-shadow:
+0 0 25px rgba(47,128,237,0.6);
+
+}
+
+
+
+.weather{
+
+background:
+linear-gradient(135deg,#89f7fe,#66a6ff);
+
+box-shadow:
+0 0 25px rgba(102,166,255,0.6);
+
+}
+
+
+
+.visibility{
+
+background:
+linear-gradient(135deg,#f6d365,#fda085);
+
+box-shadow:
+0 0 25px rgba(253,160,133,0.6);
+
+}
+
+
+
+.sun{
+
+background:
+linear-gradient(135deg,#f7971e,#ffd200);
+
+box-shadow:
+0 0 25px rgba(255,210,0,0.6);
+
+}
+
+
+
+.time{
+
+background:
+linear-gradient(135deg,#11998e,#38ef7d);
+
+box-shadow:
+0 0 25px rgba(56,239,125,0.6);
+
+}
+
+
+
+.location{
+
+background:
+linear-gradient(135deg,#232526,#414345);
+
+box-shadow:
+0 0 25px rgba(0,0,0,0.7);
+
+}
+
+
+
 
 
 </style>
 
+
 </head>
+
 
 
 <body>
 
 
-<h2>
-🌦 Live Environmental Conditions - Moratuwa
-</h2>
 
 
 
-<div class="container">
 
 
 
-<!-- 1 Temperature -->
+<div class="dashboard">
 
-<div class="card">
 
-<h3>🌡 Temperature</h3>
 
-<div class="details">
+<div class="card temperature">
 
-Current:
-<br>
+<div class="icon">🌡</div>
 
-<span class="value" id="temperature">--</span>
+<div class="title">
+Temperature
+</div>
 
-<br><br>
+<div class="value" id="temperature">
+--
+</div>
 
+<div class="sub">
 Feels Like:
-<br>
-
-<span class="value" id="feels">--</span>
-
+<span id="feels">--</span>
 </div>
 
 </div>
@@ -145,11 +415,14 @@ Feels Like:
 
 
 
-<!-- 2 Humidity -->
 
-<div class="card">
+<div class="card humidity">
 
-<h3>💧 Humidity</h3>
+<div class="icon">💧</div>
+
+<div class="title">
+Humidity
+</div>
 
 <div class="value" id="humidity">
 --
@@ -161,11 +434,13 @@ Feels Like:
 
 
 
-<!-- 3 Pressure -->
+<div class="card pressure">
 
-<div class="card">
+<div class="icon">🌍</div>
 
-<h3>🌡 Atmospheric Pressure</h3>
+<div class="title">
+Pressure
+</div>
 
 <div class="value" id="pressure">
 --
@@ -177,30 +452,44 @@ Feels Like:
 
 
 
-<!-- 4 Wind -->
+<div class="card wind">
 
-<div class="card">
+<div class="icon">💨</div>
 
-<h3>💨 Wind Condition</h3>
+<div class="title">
+Wind
+</div>
 
-<div class="details">
-
-Speed:
-<br>
-
-<span class="value" id="wind">
+<div class="value" id="wind">
 --
-</span>
+</div>
 
-<br><br>
-
+<div class="sub">
 Direction:
-<br>
+<span id="direction">--</span>
+</div>
 
-<span class="value" id="direction">
+</div>
+
+
+
+
+
+<div class="card weather">
+
+<div class="icon">☁</div>
+
+<div class="title">
+Weather
+</div>
+
+<div class="value" id="weather">
 --
-</span>
+</div>
 
+<div class="sub">
+Cloud:
+<span id="clouds">--</span>
 </div>
 
 </div>
@@ -209,40 +498,15 @@ Direction:
 
 
 
-<!-- 5 Weather -->
 
-<div class="card">
 
-<h3>☁ Weather Condition</h3>
+<div class="card visibility">
 
-<div class="details">
+<div class="icon">👁</div>
 
-<span class="value" id="weather">
---
-</span>
-
-<br><br>
-
-Cloud Cover:
-<br>
-
-<span class="value" id="clouds">
---
-</span>
-
+<div class="title">
+Visibility
 </div>
-
-</div>
-
-
-
-
-
-<!-- 6 Visibility -->
-
-<div class="card">
-
-<h3>👁 Visibility</h3>
 
 <div class="value" id="visibility">
 --
@@ -254,16 +518,16 @@ Cloud Cover:
 
 
 
-<!-- 7 Sun -->
+<div class="card sun">
 
-<div class="card">
+<div class="icon">🌅</div>
 
-<h3>🌅 Sun Information</h3>
+<div class="title">
+Sun Information
+</div>
 
-<div class="details" id="sun">
-
+<div class="sub" id="sun">
 --
-
 </div>
 
 </div>
@@ -272,27 +536,26 @@ Cloud Cover:
 
 
 
-<!-- 8 Date Time -->
+<div class="card time">
 
-<div class="card">
+<div class="icon">🕒</div>
 
-<h3>📅 Date & 🕒 Time</h3>
+<div class="title">
+Date & Time
+</div>
 
-<div class="details">
+<div class="sub">
 
 <div id="date">
 --
 </div>
 
-
 <br>
-
 
 <div id="time">
 --
 </div>
 
-
 </div>
 
 </div>
@@ -301,33 +564,34 @@ Cloud Cover:
 
 
 
-<!-- 9 Location -->
+<div class="card location">
 
-<div class="card">
+<div class="icon">📍</div>
 
-<h3>📍 Reference Location</h3>
+<div class="title">
+Reference Location
+</div>
 
-<div class="details">
+
+<div class="sub">
 
 <b>Moratuwa, Sri Lanka</b>
 
 <br><br>
-
-Used for:
-<br>
 
 Soysapura Study Area
 
 <br><br>
 
 Colombo District
+
 <br>
 
 Western Province
 
 <br><br>
 
-Data Source:
+Source:
 <br>
 
 OpenWeather API
@@ -344,22 +608,13 @@ OpenWeather API
 
 
 
-<div class="footer">
-
-Live Weather Monitoring Panel
-
-</div>
-
-
-
-
 
 <script>
 
 
-// ==========================
+// ================================
 // OpenWeather API
-// ==========================
+// ================================
 
 
 const apiKey = "149494206f597de7d528e4ab70b0eefb";
@@ -385,77 +640,90 @@ fetch(url)
 
 
 
-// Temperature
-
 document.getElementById("temperature").innerHTML =
+
 Math.round(data.main.temp) + " °C";
 
 
 
+
 document.getElementById("feels").innerHTML =
+
 Math.round(data.main.feels_like) + " °C";
 
 
 
-// Humidity
+
 
 document.getElementById("humidity").innerHTML =
+
 data.main.humidity + " %";
 
 
 
-// Pressure
+
 
 document.getElementById("pressure").innerHTML =
+
 data.main.pressure + " hPa";
 
 
 
-// Wind
+
 
 document.getElementById("wind").innerHTML =
+
 data.wind.speed + " m/s";
 
 
+
+
+
 document.getElementById("direction").innerHTML =
+
 data.wind.deg + "°";
 
 
 
-// Weather
+
 
 document.getElementById("weather").innerHTML =
+
 data.weather[0].main;
 
 
 
-// Clouds
+
 
 document.getElementById("clouds").innerHTML =
+
 data.clouds.all + " %";
 
 
 
-// Visibility
+
 
 document.getElementById("visibility").innerHTML =
-(data.visibility/1000) + " km";
+
+(data.visibility / 1000) + " km";
 
 
 
-
-// Sunrise Sunset
 
 
 let sunrise =
+
 new Date(data.sys.sunrise * 1000)
 .toLocaleTimeString();
 
 
 
 let sunset =
+
 new Date(data.sys.sunset * 1000)
 .toLocaleTimeString();
+
+
 
 
 
@@ -473,12 +741,16 @@ document.getElementById("sun").innerHTML =
 
 
 
-.catch(error=>{
+.catch(error => {
+
 
 console.log(error);
 
+
 document.getElementById("weather").innerHTML =
+
 "Error";
+
 
 });
 
@@ -487,9 +759,9 @@ document.getElementById("weather").innerHTML =
 
 
 
-// ==========================
-// Date and Time
-// ==========================
+// ================================
+// Live Date and Time
+// ================================
 
 
 function updateTime(){
@@ -526,5 +798,6 @@ setInterval(updateTime,1000);
 
 
 </body>
+
 
 </html>
